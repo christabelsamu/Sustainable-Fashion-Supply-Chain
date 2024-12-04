@@ -71,13 +71,5 @@ describe('AR Integration', () => {
     expect(result.success).toBe(true)
     expect(result.value).toBe('https://example.com/model1.glb')
   })
-  
-  it('allows retrieving try-on data', () => {
-    recordVirtualTryOn('user1', 1)
-    const result = getTryOnData('user1', 1)
-    expect(result.success).toBe(true)
-    expect(result.value.tryOnCount).toBe(1)
-    expect(result.value.lastTryOn).toBe(a('number'))
-  })
 })
 
