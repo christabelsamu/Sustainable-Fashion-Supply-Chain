@@ -1,21 +1,83 @@
+import { describe, it, expect, beforeEach } from 'vitest'
 
-import { describe, expect, it } from "vitest";
+// Mock blockchain state
+let arModels: { [key: number]: string } = {}
+let virtualTryOns: { [key: string]: { tryOnCount: number, lastTryOn: number } } = {}
 
-const accounts = simnet.getAccounts();
-const address1 = accounts.get("wallet_1")!;
+// Mock contract functions
+const addArModel = (sender: string, garmentId: number, modelUrl: string) => {
+  if (sender !== 'contract-owner') {
+    return { success: false, error: 100 }
+  }
+  arModels[garmentId] = modelUrl
+  return { success: true }
+}
 
-/*
-  The test below is an example. To learn more, read the testing documentation here:
-  https://docs.hiro.so/stacks/clarinet-js-sdk
-*/
+const recordVirtualTryOn = (user: string, garmentId: number) => {
+  const key = `${user}:${garmentId}`
+  const currentData = virtualTryOns[key] || { tryOnCount: 0, lastTryOn: 0 }
+  virtualTryOns[key] = {
+    tryOnCount: currentData.tryOnCount + 1,
+    lastTryOn: Date.now()
+  }
+  return { success: true }
+}
 
-describe("example tests", () => {
-  it("ensures simnet is well initalised", () => {
-    expect(simnet.blockHeight).toBeDefined();
-  });
+const getArModel = (garmentId: number) => {
+  return { success: true, value: arModels[garmentId] }
+}
 
-  // it("shows an example", () => {
-  //   const { result } = simnet.callReadOnlyFn("counter", "get-counter", [], address1);
-  //   expect(result).toBeUint(0);
-  // });
-});
+const getTryOnData = (user: string, garmentId: number) => {
+  const key = `${user}:${garmentId}`
+  return { success: true, value: virtualTryOns[key] }
+}
+
+describe('AR Integration', () => {
+  beforeEach(() => {
+    arModels = {}
+    virtualTryOns = {}
+  })
+  
+  it('allows adding AR models', () => {
+    const result = addArModel('contract-owner', 1, 'https://example.com/model1.glb')
+    expect(result.success).toBe(true)
+    expect(arModels[1]).toBe('https://example.com/model1.glb')
+  })
+  
+  it('prevents unauthorized AR model addition', () => {
+    const result = addArModel('user1', 1, 'https://example.com/model1.glb')
+    expect(result.success).toBe(false)
+    expect(result.error).toBe(100)
+    expect(arModels[1]).toBeUndefined()
+  })
+  
+  it('allows recording virtual try-ons', () => {
+    const result = recordVirtualTryOn('user1', 1)
+    expect(result.success).toBe(true)
+    expect(virtualTryOns['user1:1'].tryOnCount).toBe(1)
+  })
+  
+  it('increments try-on count for multiple tries', () => {
+    recordVirtualTryOn('user1', 1)
+    recordVirtualTryOn('user1', 1)
+    const result = getTryOnData('user1', 1)
+    expect(result.success).toBe(true)
+    expect(result.value.tryOnCount).toBe(2)
+  })
+  
+  it('allows retrieving AR model', () => {
+    addArModel('contract-owner', 1, 'https://example.com/model1.glb')
+    const result = getArModel(1)
+    expect(result.success).toBe(true)
+    expect(result.value).toBe('https://example.com/model1.glb')
+  })
+  
+  it('allows retrieving try-on data', () => {
+    recordVirtualTryOn('user1', 1)
+    const result = getTryOnData('user1', 1)
+    expect(result.success).toBe(true)
+    expect(result.value.tryOnCount).toBe(1)
+    expect(result.value.lastTryOn).toBe(a('number'))
+  })
+})
+
