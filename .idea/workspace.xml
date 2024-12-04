@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5e97255-6c3e-43be-b357-b8bc044c0fb5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/garment-lifecycle-nft.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/garment-lifecycle-nft.test.ts" afterDir="false" />
-    </list>
+    <list default="true" id="f5e97255-6c3e-43be-b357-b8bc044c0fb5" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -84,7 +80,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1733318836423</updated>
-      <workItem from="1733318837603" duration="380000" />
+      <workItem from="1733318837603" duration="544000" />
     </task>
     <servers />
   </component>

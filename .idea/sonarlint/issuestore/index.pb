@@ -9,3 +9,5 @@ S
 #contracts/fair-labor-practices.clar,a/8/a89d16fb0478e628041f7c374775165f06e18845
 R
 "tests/fair-labor-practices.test.ts,0/5/0577b599ef691f211516b990d6f49697a47a41f5
+X
+(contracts/sustainability-incentives.clar,f/2/f2d9db0098fe27ea802c8de2d64180fb447de7ac
