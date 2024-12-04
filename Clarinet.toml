@@ -5,6 +5,11 @@ authors = []
 telemetry = true
 cache_dir = './.cache'
 requirements = []
+[contracts.ar-integration]
+path = 'contracts/ar-integration.clar'
+clarity_version = 2
+epoch = 2.5
+
 [contracts.fair-labor-practices]
 path = 'contracts/fair-labor-practices.clar'
 clarity_version = 2

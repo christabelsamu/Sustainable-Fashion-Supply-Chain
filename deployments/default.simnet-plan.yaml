@@ -50,6 +50,11 @@ plan:
     - id: 0
       transactions:
         - emulated-contract-publish:
+            contract-name: ar-integration
+            emulated-sender: ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM
+            path: contracts/ar-integration.clar
+            clarity-version: 2
+        - emulated-contract-publish:
             contract-name: fair-labor-practices
             emulated-sender: ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM
             path: contracts/fair-labor-practices.clar
