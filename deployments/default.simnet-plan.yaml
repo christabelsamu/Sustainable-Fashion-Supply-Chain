@@ -59,4 +59,9 @@ plan:
             emulated-sender: ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM
             path: contracts/garment-lifecycle-nft.clar
             clarity-version: 2
+        - emulated-contract-publish:
+            contract-name: sustainability-incentives
+            emulated-sender: ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM
+            path: contracts/sustainability-incentives.clar
+            clarity-version: 2
       epoch: "2.5"
