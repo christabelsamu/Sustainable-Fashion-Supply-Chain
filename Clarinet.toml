@@ -1,0 +1,34 @@
+[project]
+name = 'Sustainable-Fashion-Supply-Chain'
+description = ''
+authors = []
+telemetry = true
+cache_dir = './.cache'
+requirements = []
+[contracts.ar-integration]
+path = 'contracts/ar-integration.clar'
+clarity_version = 2
+epoch = 2.5
+
+[contracts.fair-labor-practices]
+path = 'contracts/fair-labor-practices.clar'
+clarity_version = 2
+epoch = 2.5
+
+[contracts.garment-lifecycle-nft]
+path = 'contracts/garment-lifecycle-nft.clar'
+clarity_version = 2
+epoch = 2.5
+
+[contracts.sustainability-incentives]
+path = 'contracts/sustainability-incentives.clar'
+clarity_version = 2
+epoch = 2.5
+[repl.analysis]
+passes = ['check_checker']
+
+[repl.analysis.check_checker]
+strict = false
+trusted_sender = false
+trusted_caller = false
+callee_filter = false
